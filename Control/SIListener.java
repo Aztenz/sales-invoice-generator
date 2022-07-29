@@ -185,10 +185,16 @@ public class SIListener implements ActionListener, ListSelectionListener {
         JFileChooser chs = new JFileChooser();
         int chsRst = chs.showSaveDialog(listenerFrame);
         if(chsRst == JFileChooser.APPROVE_OPTION) {
-            File hf = chs.getSelectedFile();
+            String hAbs = chs.getSelectedFile().getAbsolutePath();
+            if (!hAbs.substring(hAbs.lastIndexOf(".")+1).equals("csv"))
+                hAbs += ".csv";
+            File hf = new File(hAbs);
             chsRst = chs.showSaveDialog(listenerFrame);
             if(chsRst == JFileChooser.APPROVE_OPTION) {
-                File lf = chs.getSelectedFile();
+                String lAbs = chs.getSelectedFile().getAbsolutePath();
+                if (!lAbs.substring(lAbs.lastIndexOf(".")+1).equals("csv"))
+                    lAbs += ".csv";
+                File lf = new File(lAbs);
                 try {
                     FileWriter hFW = new FileWriter(hf);
                     FileWriter lFW = new FileWriter(lf);
@@ -221,8 +227,11 @@ public class SIListener implements ActionListener, ListSelectionListener {
     }
 
     private void addLine() {
-        addLineDia = new AddLineDia(listenerFrame);
-        addLineDia.setVisible(true);
+        int selectedRaw = listenerFrame.getInvTable().getSelectedRow();
+        if(selectedRaw != -1) {
+            addLineDia = new AddLineDia(listenerFrame);
+            addLineDia.setVisible(true);
+        }
     }
 
     private void removeLine() {
@@ -242,7 +251,12 @@ public class SIListener implements ActionListener, ListSelectionListener {
         String date = addInvDia.getDate();
         addInvDia.setVisible(false);
         addInvDia.dispose();
-        int num = getHighestInv(1);
+        int num = 1;
+        for (InvoiceHeader invH : listenerFrame.getMyInvoices()) {
+            if (invH.getNumber() > num)
+                num = invH.getNumber();
+        }
+        num ++;
         try {
             Date D = SIFrame.myForm.parse(date);
             InvoiceHeader myInv = new InvoiceHeader(name, num, D);
@@ -255,14 +269,15 @@ public class SIListener implements ActionListener, ListSelectionListener {
     }
 
     private void addLineOk() {
-        int selectedRow = listenerFrame.getInvTable().getSelectedRow();
-        if(selectedRow>-1) {
+        int selectedRaw = listenerFrame.getInvTable().getSelectedRow();
+        if(selectedRaw != -1) {
             String name = addLineDia.getItemName();
             double price = addLineDia.getPrice();
             int count = addLineDia.getCount();
-            int selectedRaw = listenerFrame.getInvTable().getSelectedRow();
             InvoiceHeader invH = listenerFrame.getMyInvoices().get(selectedRaw);
             invH.addToInvoiceLines(new InvoiceLine(invH, name, count, price));
+            addLineDia.setVisible(false);
+            addLineDia.dispose();
             ((TableL) listenerFrame.getLinesTable().getModel()).fireTableDataChanged();
         }
     }
@@ -275,13 +290,5 @@ public class SIListener implements ActionListener, ListSelectionListener {
     private void addLineCancel() {
         addLineDia.setVisible(false);
         addLineDia.dispose();
-    }
-    
-    private int getHighestInv(int num) {
-        for (InvoiceHeader invH : listenerFrame.getMyInvoices()) {
-            if (invH.getNumber() > num)
-                num = invH.getNumber();
-        }
-        return num + 1;
     }
 }
