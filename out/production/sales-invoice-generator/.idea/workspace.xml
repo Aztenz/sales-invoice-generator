@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b3b9bae6-3356-4a59-87c2-19e3717a39df" name="Changes" comment="" />
+    <list default="true" id="b3b9bae6-3356-4a59-87c2-19e3717a39df" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/View/AddInvDia.java" beforeDir="false" afterPath="$PROJECT_DIR$/View/AddInvDia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/AddLineDia.java" beforeDir="false" afterPath="$PROJECT_DIR$/View/AddLineDia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/SIFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/View/SIFrame.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +25,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2CRCb6tp7MZupHKZS7bwheMgFPa" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -28,12 +35,20 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/Coding/Projects/Java/sales-invoice-generator/View"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Coding\Projects\Java\sales-invoice-generator\View" />
+      <recent name="D:\Coding\Projects\Java\sales-invoice-generator\Model" />
+      <recent name="D:\Coding\Projects\Java\sales-invoice-generator\Control" />
+    </key>
+  </component>
   <component name="RunManager">
-    <configuration name="main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="main" />
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="sales-invoice-generator" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -41,7 +56,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.main" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -55,5 +70,16 @@
       <updated>1658756082049</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
