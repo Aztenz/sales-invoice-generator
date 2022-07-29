@@ -51,4 +51,7 @@ public class InvoiceLine {
     public String toString() {
         return "Name: " + this.itemName + ", Count: " +this.itemCount + ", Price: " + this.priceOnePiece;
     }
+    public String saveFileForm() {
+        return this.myInvoice.getNumber() + "," + this.itemName + "," + this.priceOnePiece + "," + this.itemCount + "\n";
+    }
 }

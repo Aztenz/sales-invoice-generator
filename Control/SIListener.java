@@ -4,6 +4,7 @@ import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -173,6 +174,37 @@ public class SIListener implements ActionListener, ListSelectionListener {
     }
 
     private void save() {
+        String invH = "";
+        String invL = "";
+        for(InvoiceHeader invoiceHeader : listenerFrame.getMyInvoices()) {
+            invH += invoiceHeader.saveFileForm();
+            for(InvoiceLine invoiceLine : invoiceHeader.getInvoiceLines()) {
+                invL += invoiceLine.saveFileForm();
+            }
+        }
+        JFileChooser chs = new JFileChooser();
+        int chsRst = chs.showSaveDialog(listenerFrame);
+        if(chsRst == JFileChooser.APPROVE_OPTION) {
+            File hf = chs.getSelectedFile();
+            chsRst = chs.showSaveDialog(listenerFrame);
+            if(chsRst == JFileChooser.APPROVE_OPTION) {
+                File lf = chs.getSelectedFile();
+                try {
+                    FileWriter hFW = new FileWriter(hf);
+                    FileWriter lFW = new FileWriter(lf);
+                    hFW.write(invH);
+                    lFW.write(invL);
+                    hFW.flush();
+                    lFW.flush();
+                    hFW.close();
+                    lFW.close();
+                }
+                catch (IOException e) {
+                    JOptionPane.showMessageDialog(listenerFrame,"Error in Saving File!\n Please try again with the right file."
+                            , "File Save Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
     }
 
     private void addInv() {

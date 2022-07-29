@@ -1,5 +1,7 @@
 package Model;
 
+import View.SIFrame;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -62,5 +64,8 @@ public class InvoiceHeader {
 
     public String toString() {
         return "Name: " + this.customerName + ", Date: " +this.invDate + ", Number: " +this.number;
+    }
+    public String saveFileForm() {
+        return number + "," + SIFrame.myForm.format(invDate) + "," + customerName + "\n";
     }
 }
