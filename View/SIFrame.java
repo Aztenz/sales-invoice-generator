@@ -213,6 +213,8 @@ public class SIFrame extends javax.swing.JFrame {
             public void run() {
                 SIFrame myFrame = new SIFrame();
                 myFrame.setVisible(true);
+                System.out.println("Initializing the app: ");
+                myFrame.lsr.load("InvoiceHeader.csv", "InvoiceLine.csv");
             }
         });
     }

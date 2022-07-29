@@ -47,4 +47,8 @@ public class InvoiceLine {
     public void setPriceOnePiece(double priceOnePiece) {
         this.priceOnePiece = priceOnePiece;
     }
+
+    public String toString() {
+        return "Name: " + this.itemName + ", Count: " +this.itemCount + ", Price: " + this.priceOnePiece;
+    }
 }

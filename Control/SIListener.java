@@ -159,6 +159,14 @@ public class SIListener implements ActionListener, ListSelectionListener {
                 listenerFrame.setMyInvoices(invoiceHeaders);
                 listenerFrame.getInvTable().setModel(new TableH(invoiceHeaders, listenerFrame));
                 ((TableH) listenerFrame.getInvTable().getModel()).fireTableDataChanged();
+                for (InvoiceHeader inv : listenerFrame.getMyInvoices())
+                {
+                    System.out.println(inv.toString());
+                    for(InvoiceLine invL : inv.getInvoiceLines())
+                    {
+                        System.out.println(invL.toString());
+                    }
+                }
             } catch (HeadlessException | IOException | NumberFormatException | ParseException myException) {
             }
         }

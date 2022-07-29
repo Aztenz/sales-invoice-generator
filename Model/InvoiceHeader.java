@@ -59,5 +59,8 @@ public class InvoiceHeader {
     public void setNumber(int number) {
         this.number = number;
     }
-    
+
+    public String toString() {
+        return "Name: " + this.customerName + ", Date: " +this.invDate + ", Number: " +this.number;
+    }
 }
